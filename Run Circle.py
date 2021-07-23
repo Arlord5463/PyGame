@@ -1,45 +1,48 @@
 import pygame
-import sys
 
+
+WIDTH = 400
+HEIGHT = 400
 FPS = 60
-WIN_WIDTH = 400
-WIN_HEIGHT = 100
+
 WHITE = (255, 255, 255)
-ORANGE = (255, 150, 100)
+ORANGE = (255, 165, 0)
+BLACK = (0, 0, 0)
+GREY = (150, 150, 150)
+PINK = (250, 218, 221)
 
+r = 20
+x = 200
+y = 200
+
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
 clock = pygame.time.Clock()
-sc = pygame.display.set_mode(
-    (WIN_WIDTH, WIN_HEIGHT))
 
-# радиус будущего круга
-r = 30
-# координаты круга
-# скрываем за левой границей
-x = 0 - r
-# выравнивание по центру по вертикали
-y = WIN_HEIGHT // 2
+screen.fill(WHITE)
+pygame.draw.circle(screen, ORANGE, (x, y), r)
+pygame.display.update()
 
-while 1:
-    for i in pygame.event.get():
+pygame.init()
+running = True
+while running:
+    events = pygame.event.get()
+    for i in events:
         if i.type == pygame.QUIT:
-            sys.exit()
+            running = False
 
-    # заливаем фон
-    sc.fill(WHITE)
-    # рисуем круг
-    pygame.draw.circle(sc, ORANGE,
-                       (x, y), r)
-    # обновляем окно
+    screen.fill(WHITE)
+    pygame.draw.circle(screen, ORANGE, (x, y), r)
     pygame.display.update()
-
-    # Если круг полностью скрылся
-    # за правой границей,
-    if x >= WIN_WIDTH + r:
-        # перемещаем его за левую
-        x = 0 - r
-    else:  # Если еще нет,
-        # на следующей итерации цикла
-        # круг отобразится немного правее
-        x += 2
+    keys = pygame.key.get_pressed()
+    if x >= WIDTH + r:
+        x = -19
+    elif x <= 0 - r:
+        x = 419
+    else:
+        if keys[pygame.K_d]:
+            x += 2
+        elif keys[pygame.K_a]:
+            x -= 2
 
     clock.tick(FPS)
+pygame.quit()
