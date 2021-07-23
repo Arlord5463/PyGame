@@ -34,6 +34,7 @@ while running:
     pygame.draw.circle(screen, ORANGE, (x, y), r)
     pygame.display.update()
     keys = pygame.key.get_pressed()
+    moiti
     if x >= WIDTH + r:
         x = -19
     elif x <= 0 - r:
