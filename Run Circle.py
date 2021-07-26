@@ -42,14 +42,17 @@ while running:
         if i.type == pygame.KEYUP:
             if i.key in [pygame.K_LEFT, pygame.K_RIGHT, pygame.K_DOWN, pygame.K_UP]:
                 motion = 'Stop'
-    if motion == 'Left':
-        x -= 2
-    elif motion == 'Right':
-        x += 2
-    elif motion == 'Down':
-        y += 2
-    elif motion == 'Up':
-        y -= 2
+    if x >= 380 and motion == 'Right' or x <= 20 and motion == 'Left' or y >= 380 and motion == 'Down' or y <= 20 and motion == 'Up':
+        motion = 'Stop'
+    else:
+        if motion == 'Left':
+            x -= 2
+        elif motion == 'Right':
+            x += 2
+        elif motion == 'Down':
+            y += 2
+        elif motion == 'Up':
+            y -= 2
 
     screen.fill(WHITE)
     pygame.draw.circle(screen, ORANGE, (x, y), r)
