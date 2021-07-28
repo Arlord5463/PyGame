@@ -31,16 +31,16 @@ while running:
         if i.type == pygame.QUIT:
             running = False
         if i.type == pygame.KEYDOWN:
-            if i.key == pygame.K_LEFT:
+            if i.key == pygame.K_a:
                 motion = 'Left'
-            elif i.key == pygame.K_RIGHT:
+            elif i.key == pygame.K_d:
                 motion = 'Right'
-            elif i.key == pygame.K_DOWN:
+            elif i.key == pygame.K_s:
                 motion = 'Down'
-            elif i.key == pygame.K_UP:
+            elif i.key == pygame.K_w:
                 motion = 'Up'
         if i.type == pygame.KEYUP:
-            if i.key in [pygame.K_LEFT, pygame.K_RIGHT, pygame.K_DOWN, pygame.K_UP]:
+            if i.key in [pygame.K_a, pygame.K_d, pygame.K_s, pygame.K_w]:
                 motion = 'Stop'
     if x >= 380 and motion == 'Right' or x <= 20 and motion == 'Left' or y >= 380 and motion == 'Down' or y <= 20 and motion == 'Up':
         motion = 'Stop'
