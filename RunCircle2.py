@@ -15,7 +15,7 @@ x = 200
 y = 200
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-clock = pygame.time.Clock()
+clock = pygame.time.Clock(60)
 
 screen.fill(WHITE)
 pygame.draw.circle(screen, ORANGE, (x, y), r)
