@@ -28,14 +28,7 @@ pygame.init()
 running = True
 
 
-def jump():
-    global y, make_jump, jump_counter
-    if jump_counter >= -30:
-        y -= jump_counter / 3.0
-        jump_counter -= 1
-    else:
-        jump_counter = 30
-        make_jump = False
+
 
 
 while running:
@@ -47,7 +40,12 @@ while running:
     if keys[pygame.K_SPACE]:
         make_jump = True
     if make_jump == True:
-        jump()
+        if jump_counter >= -30:
+            y -= jump_counter / 3.0
+            jump_counter -= 1
+        else:
+            jump_counter = 30
+            make_jump = False
 
     screen.fill(WHITE)
     pygame.draw.circle(screen, ORANGE, (x, y), r)
