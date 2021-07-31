@@ -12,7 +12,7 @@ PINK = (250, 218, 221)
 
 r = 20
 x = 200
-y = 200
+y = 380
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 clock = pygame.time.Clock()
@@ -26,25 +26,34 @@ jump_counter = 30
 
 pygame.init()
 running = True
+
+
+def jump():
+    global y, make_jump, jump_counter
+    if jump_counter >= -30:
+        y -= jump_counter / 3.0
+        jump_counter -= 1
+    else:
+        jump_counter = 30
+        make_jump = False
+
+
 while running:
     events = pygame.event.get()
     for i in events:
         if i.type == pygame.QUIT:
             running = False
-        if i.key[pygame.K_SPACE]:
-            make_jump = True
-        if make_jump:
-            while jump_counter >= -30:
-                y -= jump_counter / 2.5
-                jump_counter -= 1
-            else:
-                jump_counter = 30
-                make_jump = False
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_SPACE]:
+        make_jump = True
+    if make_jump == True:
+        jump()
+
     screen.fill(WHITE)
     pygame.draw.circle(screen, ORANGE, (x, y), r)
     pygame.display.update()
     keys = pygame.key.get_pressed()
 
-
     clock.tick(FPS)
+
 pygame.quit()
