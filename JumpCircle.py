@@ -27,30 +27,27 @@ jump_counter = 30
 pygame.init()
 running = True
 
-
-
-
-
 while running:
     events = pygame.event.get()
     for i in events:
         if i.type == pygame.QUIT:
             running = False
+
     keys = pygame.key.get_pressed()
     if keys[pygame.K_SPACE]:
         make_jump = True
-    if make_jump == True:
+
+    if make_jump:
         if jump_counter >= -30:
-            y -= jump_counter / 3.0
+            y -= jump_counter / 3
             jump_counter -= 1
         else:
             jump_counter = 30
-            make_jump = False
+            make_jump = False    
 
     screen.fill(WHITE)
     pygame.draw.circle(screen, ORANGE, (x, y), r)
     pygame.display.update()
-    keys = pygame.key.get_pressed()
 
     clock.tick(FPS)
 
