@@ -79,7 +79,6 @@ while running:
         enemies.append(pygame.Rect(x_enemy, -enemy_height, enemy_width, enemy_height))
         last_time = current_time
         enemyCd = random.randint(100, 5000)
-
     # Отрисовка противников
     for enemy in enemies:
         screen.blit(enemy_img, (enemy.left, enemy.top))
