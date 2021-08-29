@@ -1,5 +1,6 @@
 import pygame
 import random
+import time
 
 # Настройки окна
 WIDTH = 500
@@ -105,6 +106,18 @@ while running:
     for bullet in bullets:
         if bullet.bottom < 0:
             bullets.remove(bullet)
+
+    # Пришельцы уничтожают экипаж, Плохая концовка.
+        if hero.colliderect(enemy):
+            time.sleep(0.5)
+            running = False
+            print('Game Over')
+    # Уничтожение пришельца
+    for enemy in enemies:
+        for bullet in bullets:
+            if enemy.colliderect(bullet):
+                bullets.remove(bullet)
+                enemies.remove(enemy)
 
     screen.blit(heroImg, (hero.left, hero.top))
     pygame.display.update()
