@@ -108,6 +108,7 @@ while running:
             bullets.remove(bullet)
 
     # Пришельцы уничтожают экипаж, Плохая концовка.
+    for enemy in enemies:
         if hero.colliderect(enemy):
             time.sleep(0.5)
             running = False
