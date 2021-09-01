@@ -49,18 +49,18 @@ while running:
         if i.type == pygame.QUIT:
             running = False
         if i.type == pygame.KEYDOWN:
-            if i.key == pygame.K_a:
+            if i.key == pygame.K_LEFT:
                 motion = 'Left'
-            if i.key == pygame.K_d:
+            if i.key == pygame.K_RIGHT:
                 motion = 'Right'
-            if i.key == pygame.K_s:
+            if i.key == pygame.K_DOWN:
                 motion = 'Down'
-            if i.key == pygame.K_w:
+            if i.key == pygame.K_UP:
                 motion = 'Up'
             if i.key == pygame.K_SPACE:
                 isShot = True
         if i.type == pygame.KEYUP:
-            if i.key in [pygame.K_a, pygame.K_d, pygame.K_s, pygame.K_w]:
+            if i.key in [pygame.K_LEFT, pygame.K_RIGHT, pygame.K_DOWN, pygame.K_UP]: 
                 motion = 'Stop'
     # Передвижение персонажа
     if motion == 'Left' and hero.left > 0:
